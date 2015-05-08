@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+  
+    <parent>
+        <groupId>org.global-canvas</groupId>
+        <artifactId>global-canvas</artifactId>
+        <version>1.0.0-SNAPSHOT</version>  
+    </parent>
+  
+    <artifactId>global-canvas-model</artifactId>
+  
+    <name>Global Canvas Model</name>
+    <description>Global Canvas Model</description>
+    <packaging>jar</packaging>
+    
+    <dependencies>
+      
+    </dependencies>
+  
+  
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <repositories>
+        <repository>
+            <id>jboss</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+</project>
