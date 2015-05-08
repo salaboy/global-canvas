@@ -19,17 +19,19 @@ public class DrawEvent {
     private int y;
     private String type;
     private Date eventDate;
+    private String color;
 
     public DrawEvent() {
 
     }
 
-    public DrawEvent(String user, int x, int y, String type) {
+    public DrawEvent(String user, int x, int y, String type, String color) {
         this.user = user;
         this.x = x;
         this.y = y;
         this.type = type;
         eventDate = new Date();
+        this.color = color;
     }
 
     public String getUser() {
@@ -52,47 +54,50 @@ public class DrawEvent {
         return eventDate;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + (this.user != null ? this.user.hashCode() : 0);
-        hash = 47 * hash + this.x;
-        hash = 47 * hash + this.y;
-        hash = 47 * hash + (this.type != null ? this.type.hashCode() : 0);
-        hash = 47 * hash + (this.eventDate != null ? this.eventDate.hashCode() : 0);
-        return hash;
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final DrawEvent other = (DrawEvent) obj;
-        if ((this.user == null) ? (other.user != null) : !this.user.equals(other.user)) {
-            return false;
-        }
-        if (this.x != other.x) {
-            return false;
-        }
-        if (this.y != other.y) {
-            return false;
-        }
-        if ((this.type == null) ? (other.type != null) : !this.type.equals(other.type)) {
-            return false;
-        }
-        if (this.eventDate != other.eventDate && (this.eventDate == null || !this.eventDate.equals(other.eventDate))) {
-            return false;
-        }
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DrawEvent drawEvent = (DrawEvent) o;
+
+        if (x != drawEvent.x) return false;
+        if (y != drawEvent.y) return false;
+        if (!user.equals(drawEvent.user)) return false;
+        if (!type.equals(drawEvent.type)) return false;
+        if (!eventDate.equals(drawEvent.eventDate)) return false;
+        return color.equals(drawEvent.color);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = user.hashCode();
+        result = 31 * result + x;
+        result = 31 * result + y;
+        result = 31 * result + type.hashCode();
+        result = 31 * result + eventDate.hashCode();
+        result = 31 * result + color.hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
-        return "DrawEvent{" + "user=" + user + ", x=" + x + ", y=" + y + ", type=" + type + ", eventDate=" + eventDate + '}';
+        return "DrawEvent{" +
+                "user='" + user + '\'' +
+                ", x=" + x +
+                ", y=" + y +
+                ", type='" + type + '\'' +
+                ", eventDate=" + eventDate +
+                ", color='" + color + '\'' +
+                '}';
     }
-
 }

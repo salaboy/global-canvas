@@ -14,11 +14,19 @@
         document.getElementsByTagName('article')[0].appendChild(App.canvas);
         App.ctx = App.canvas.getContext("2d");
         App.ctx.fillStyle = "solid";
-        App.ctx.strokeStyle = "#ECD018";
+        localUserColor = getRandomColor();
+        App.ctx.strokeStyle = localUserColor;
         App.ctx.lineWidth = 5;
         App.ctx.lineCap = "round";
 
-
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
         App.loadCanvas = function(dataURL){    // load image from data url
             var imageObj = new Image();
@@ -113,7 +121,7 @@
         };
         websocket.onmessage = function (evt) {
             var event = JSON.parse(evt.data);
-            App.draw(event.x, event.y, event.type);
+            App.draw(event.x, event.y, event.type, event.color);
         };
         websocket.onerror = function (evt) {
             console.log("Error: " + evt)
@@ -125,14 +133,16 @@
 
 
 
-        App.draw = function (x, y, type) {
+        App.draw = function (x, y, type, color) {
             if (type === "dragstart") {
                 App.ctx.beginPath();
+                App.ctx.strokeStyle = color;
                 return App.ctx.moveTo(x, y);
             } else if (type === "drag") {
                 App.ctx.lineTo(x, y);
                 return App.ctx.stroke();
             } else {
+                App.ctx.strokeStyle = localUserColor;
                 return App.ctx.closePath();
             }
         };
@@ -148,8 +158,9 @@
         e.offsetY = e.layerY - offset.top;
         x = e.offsetX;
         y = e.offsetY;
-        App.draw(x, y, type);
-        App.doSend(JSON.stringify({user: App.getUrlParameter("user"), x: x, y: y, type: type}));
+        App.draw(x, y, type, localUserColor);
+        console.log("color here: "+App.ctx.strokeStyle.toString());
+        App.doSend(JSON.stringify({user: App.getUrlParameter("user"), x: x, y: y, type: type, color: App.ctx.strokeStyle.toString()}));
 
     });
     $(function () {

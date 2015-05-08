@@ -24,7 +24,8 @@ public class DrawEventDecoder implements Decoder.Text<DrawEvent> {
         
         JsonObject jsonObject = Json
                 .createReader(new StringReader(jsonMessage)).readObject();
-        DrawEvent drawEvent = new DrawEvent(jsonObject.getString("user"), jsonObject.getInt("x"), jsonObject.getInt("y"), jsonObject.getString("type"));
+        DrawEvent drawEvent = new DrawEvent(jsonObject.getString("user"), jsonObject.getInt("x"),
+                jsonObject.getInt("y"), jsonObject.getString("type"), jsonObject.getString("color"));
         
         return drawEvent;
         

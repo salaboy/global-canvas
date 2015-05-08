@@ -25,7 +25,9 @@ public class DrawEventEncoder implements Encoder.Text<DrawEvent> {
                 .add("user", drawEvent.getUser())
                 .add("x", drawEvent.getX())
                 .add("y", drawEvent.getY())
-                .add("type", drawEvent.getType()).build();
+                .add("type", drawEvent.getType())
+                .add("color", drawEvent.getColor())
+                .build();
         return jsonObject.toString();
 
     }

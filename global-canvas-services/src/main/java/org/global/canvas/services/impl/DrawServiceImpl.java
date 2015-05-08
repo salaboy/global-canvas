@@ -6,6 +6,7 @@
 package org.global.canvas.services.impl;
 
 import com.grogdj.grogshop.core.model.DrawEvent;
+
 import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
 import org.apache.batik.svggen.SVGGraphics2D;
@@ -22,6 +23,7 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+import java.awt.*;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;
@@ -33,6 +35,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static java.awt.Stroke.*;
+
 
 /**
  *
@@ -61,7 +66,10 @@ public class DrawServiceImpl implements DrawService {
             domImpl = GenericDOMImplementation.getDOMImplementation();
             document = domImpl.createDocument(svgNS, "svg", null);
             svgGenerator = new SVGGraphics2D(document);
-
+            System.out.println("Color here: "+event.getColor());
+            svgGenerator.setColor(Color.decode(event.getColor()));
+            svgGenerator.setStroke(new BasicStroke(5, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL, 0,
+                    new float[] { 3, 1 }, 0));
         }
 
             currentX.add(event.getX());
