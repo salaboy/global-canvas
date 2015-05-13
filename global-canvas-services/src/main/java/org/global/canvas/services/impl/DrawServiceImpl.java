@@ -96,7 +96,7 @@ public class DrawServiceImpl implements DrawService {
 
         try {
             boolean useCSS = true; // we want to use CSS style attributes
-            out = new OutputStreamWriter(new FileOutputStream("/tmp/canvas/"+new Date().getTime()+"-"+currentUser+".svg"),"UTF-8");
+            out = new OutputStreamWriter(new FileOutputStream("/tmp/canvas/"+new Date().getTime()+"-"+currentUser.split("@")[0]+".svg"),"UTF-8");
             try {
                 svgGenerator.stream(out, useCSS);
             } catch (SVGGraphics2DIOException ex) {

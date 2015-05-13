@@ -1,18 +1,42 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.event.drag-2.0.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
-	
+<!doctype html>
+<html class="no-js" lang="" ng-app="gcanvas">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Global Canvas</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Global Canvas</title>
-</head>
-<body>
-	<article><!-- our canvas will be inserted here--></article>
-	<a id="dl" download="Canvas.png">Download Canvas</a>
-	<br/>
-	<a id="merge" href="#">Merge Session</a>
+        <link rel="stylesheet" href="resources/css/normalize.css">
+        <link rel="stylesheet" href="styles/app.css">
+        <script src="resources/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body  ng-controller="mainController">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+		
+        <ng-view>
+        	
+        </ng-view>
 
-</body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="resources/js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="resources/js/vendor/angular.min.js"></script>
+        <script src="resources/js/vendor/angular-route.js"></script>
+        <script src="resources/js/vendor/angular-cookies.min.js"></script>
+        <script src="resources/js/vendor/angular-animate.min.js"></script>
+        <script src="resources/js/plugins.js"></script>
+        <script src="resources/js/main.js"></script>
+        <!-- APP JS -->
+        <script src="app.js"></script>
+        <!-- CONTROLLERS -->
+        <script src="controllers/mainController.js"></script>
+        <script src="controllers/homeController.js"></script>
+        <script src="controllers/canvasController.js"></script>
+        <script src="directives/drawing.js"></script>
+        <!-- Services -->
+        <script src="services/utilityFactory.js"></script>
+        <script src="services/canvasFactory.js"></script>
+    </body>
+</html>

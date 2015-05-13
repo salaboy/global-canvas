@@ -1,0 +1,24 @@
+<div id="user-form">
+	<form novalidate name="newUser">
+		<fieldset>
+			<legend>
+				Welcome Stranger
+			</legend>
+			<p>
+				<label for="email">Plese enter your email</label>
+				<input id="email" ng-model="newUser.email" type="email">
+			</p>
+			<p>
+				<label for="anon">
+				<input id="anon" type="checkbox">
+					Stay anonymous
+				</label>
+			</p>
+			<p>
+				<button type="submit"  ng-click="newUserSubmit()" >Create</button>
+			</p>
+		</fieldset>
+		
+	</form>
+	
+</div>

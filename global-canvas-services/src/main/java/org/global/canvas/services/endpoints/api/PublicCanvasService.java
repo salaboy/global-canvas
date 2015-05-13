@@ -25,7 +25,7 @@ public interface PublicCanvasService {
 
     @Path("merge")
     @GET
-    @Produces({"application/json"})
+    @Produces({"text/plain"})
     Response merge() throws ServiceException;
 
 }
